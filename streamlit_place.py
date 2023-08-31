@@ -11,7 +11,7 @@ import os
 
 #import leafmap.kepler as leafmap
 
-api_key = os.getenv(api_key)
+api_key = os.getenv('api_key')
 
 
 st.set_page_config(page_title = 'cashback',
