@@ -7,10 +7,11 @@ import json
 import time 
 import plotly.express as px
 import leafmap.foliumap as leafmap
-import configure
+import os
+
 #import leafmap.kepler as leafmap
 
-api_key = configure.api_key
+api_key = os.getenv(api_key)
 
 
 st.set_page_config(page_title = 'cashback',
