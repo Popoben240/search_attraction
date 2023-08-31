@@ -1,6 +1,6 @@
 beautifulsoup4==4.12.2
 gspread==5.7.2
 leafmap==0.18.8
-pandas>1.4.2
+pandas<1.4.2
 requests==2.28.2
 streamlit==1.18.1
