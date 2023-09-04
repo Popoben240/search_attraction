@@ -7,11 +7,10 @@ import json
 import time 
 import plotly.express as px
 import leafmap.foliumap as leafmap
-import os
 
 #import leafmap.kepler as leafmap
 
-api_key = os.getenv('api_key')
+api_key = 'AIzaSyCei8_jKEUZ6DHI0mG9Z2CwN-qTFdqmKeo'
 
 
 st.set_page_config(page_title = 'cashback',
@@ -58,8 +57,9 @@ else:
     places = requests.get(f'https://maps.googleapis.com/maps/api/place/textsearch/json?query={query_text}&language=en&key={api_key}')
 # Convert the response to a JSON object.
     places_results = json.loads(places.text)['results']
-    w = list(places_results)
     time.sleep(10)
+    w = list(places_results)
+    
 
     while True:
         if 'next_page_token' in json.loads(places.text):
@@ -82,14 +82,16 @@ else:
     final = final.sort_values(by="user_ratings_total",ascending=False)
     final.reset_index(drop=True,inplace=True)
     print(final.columns)
+    print(final["name"])
+    print(final["user_ratings_total"])
+    print(final["rating"])
 
 
 
     #df_selection = final.query(
-    #    "user_ratings_total >= @review_amount_filter &  rating>= @review_filter" 
-    #)
-    df_selection = final
+    #    "user_ratings_total >= @review_amount_filter &  rating>= @review_filter" )
 
+    df_selection = final
     df_selection["lat"] = df_selection["geometry"].apply(lambda x: x["location"]["lat"])
 
     df_selection["lng"] = df_selection["geometry"].apply(lambda x: x["location"]["lng"])
@@ -100,6 +102,13 @@ else:
 
 
     st.dataframe(df_selection)
+
+
+    
+
+
+
+
 
 
     c_center = [sum(df_selection["lat"])/len(df_selection["lat"]),sum(df_selection["lng"]/len(df_selection["lng"]))]
