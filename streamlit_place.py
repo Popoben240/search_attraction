@@ -65,11 +65,11 @@ else:
         if 'next_page_token' in json.loads(places.text):
             token = json.loads(places.text)["next_page_token"]
             print(token[-5:-1])
+            time.sleep(10)
             places = requests.get(f'https://maps.googleapis.com/maps/api/place/textsearch/json?pagetoken={token}&key={api_key}')
             test = json.loads(places.text)['results']   
         
-            time.sleep(10)
-        
+
             w.extend(test)
             print(len(w))
 
@@ -91,7 +91,7 @@ else:
     df_selection = final.query(
         "user_ratings_total >= @review_amount_filter &  rating>= @review_filter" )
 
-    df_selection = final
+    #df_selection = final
     df_selection["lat"] = df_selection["geometry"].apply(lambda x: x["location"]["lat"])
 
     df_selection["lng"] = df_selection["geometry"].apply(lambda x: x["location"]["lng"])
