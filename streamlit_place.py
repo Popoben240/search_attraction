@@ -59,6 +59,7 @@ else:
 # Convert the response to a JSON object.
     places_results = json.loads(places.text)['results']
     w = list(places_results)
+    time.sleep(10)
 
     while True:
         if 'next_page_token' in json.loads(places.text):
