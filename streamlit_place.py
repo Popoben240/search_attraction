@@ -88,8 +88,8 @@ else:
 
 
 
-    #df_selection = final.query(
-    #    "user_ratings_total >= @review_amount_filter &  rating>= @review_filter" )
+    df_selection = final.query(
+        "user_ratings_total >= @review_amount_filter &  rating>= @review_filter" )
 
     df_selection = final
     df_selection["lat"] = df_selection["geometry"].apply(lambda x: x["location"]["lat"])
