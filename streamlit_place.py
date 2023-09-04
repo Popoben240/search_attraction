@@ -85,9 +85,10 @@ else:
 
 
 
-    df_selection = final.query(
-        "user_ratings_total >= @review_amount_filter &  rating>= @review_filter" 
-    )
+    #df_selection = final.query(
+    #    "user_ratings_total >= @review_amount_filter &  rating>= @review_filter" 
+    #)
+    df_selection = final
 
     df_selection["lat"] = df_selection["geometry"].apply(lambda x: x["location"]["lat"])
 
@@ -99,13 +100,6 @@ else:
 
 
     st.dataframe(df_selection)
-
-
-    
-
-
-
-
 
 
     c_center = [sum(df_selection["lat"])/len(df_selection["lat"]),sum(df_selection["lng"]/len(df_selection["lng"]))]
