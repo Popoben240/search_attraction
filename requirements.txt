@@ -3,6 +3,6 @@ gspread==5.7.2
 leafmap==0.18.8
 pandas<1.4.2
 requests==2.31.0
-streamlit==1.23.0
+streamlit==1.18.1
 altair==5
 plotly==5.13.0
