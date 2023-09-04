@@ -67,7 +67,7 @@ else:
             places = requests.get(f'https://maps.googleapis.com/maps/api/place/textsearch/json?pagetoken={token}&key={api_key}')
             test = json.loads(places.text)['results']   
         
-            time.sleep(5)
+            time.sleep(10)
         
             w.extend(test)
             print(len(w))
